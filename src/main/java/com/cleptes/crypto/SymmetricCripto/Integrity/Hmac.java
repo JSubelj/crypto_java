@@ -61,8 +61,7 @@ public class Hmac {
                 mac.init(cipherKey);
                 byte[] HMAC_gen = mac.doFinal(PT);
 
-                MacVerifiers macVerifiers = new MacVerifiers();
-                boolean verify = macVerifiers.secureVerifier(HMAC_gen,HMAC);
+                boolean verify = MacVerifiers.secureVerifier(HMAC_gen,HMAC);
                 if(verify){
                     print("PRAVILNO");
                 }else{

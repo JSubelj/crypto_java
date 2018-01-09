@@ -7,10 +7,7 @@ import java.security.Key;
 import java.util.Arrays;
 
 public class MacVerifiers {
-    public MacVerifiers() {
-    }
-
-    public boolean simpleVerifier(byte[] mac1, byte[] mac2){
+    public static boolean simpleVerifier(byte[] mac1, byte[] mac2){
         if (mac1==null || mac2==null) return false;
         if (mac1.length != mac2.length) return false;
 
@@ -23,7 +20,7 @@ public class MacVerifiers {
         return checker;
     }
 
-    public boolean secureVerifier(byte[] mac1, byte[] mac2) throws Exception{
+    public static boolean secureVerifier(byte[] mac1, byte[] mac2) throws Exception{
         Mac mac = Mac.getInstance("HmacSHA256");
         Key key = KeyGenerator.getInstance("HmacSHA256").generateKey();
         mac.init(key);

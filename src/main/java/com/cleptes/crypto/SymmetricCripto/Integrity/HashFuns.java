@@ -53,9 +53,7 @@ public class HashFuns {
                 MessageDigest messageDigest = MessageDigest.getInstance(cipher);
                 byte[] md_gen = messageDigest.digest(PT);
 
-                MacVerifiers macVerifiers = new MacVerifiers();
-
-                if(macVerifiers.secureVerifier(md,md_gen)){
+                if(MacVerifiers.secureVerifier(md,md_gen)){
                     print("OK");
                 }else{
                     print("NOT OK");
