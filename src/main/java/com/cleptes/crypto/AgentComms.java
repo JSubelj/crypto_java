@@ -1,4 +1,6 @@
-package isp.handson;
+package com.cleptes.crypto;
+
+import com.cleptes.crypto.Agents.Agent;
 
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
