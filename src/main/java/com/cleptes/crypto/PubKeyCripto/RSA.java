@@ -21,7 +21,7 @@ public class RSA {
         final KeyPair aliceKP = keygen.generateKeyPair();
         final KeyPair bobKP = KeyPairGenerator.getInstance("RSA").generateKeyPair();
 
-        final Agent alice = new Agent("alice", alice2bob, bob2alice, null, "RSA/ECB/NoPadding") {
+        final Agent alice = new Agent("alice", alice2bob, bob2alice, null, "RSA/ECB/OAEPPadding") {
             @Override
             public void execute() throws Exception {
                 String msg = "Good moarning bobieboy";
@@ -39,12 +39,12 @@ public class RSA {
             }
         };
 
-        final Agent bob = new Agent("bob", bob2alice, alice2bob, null, "RSA/ECB/NoPadding") {
+        final Agent bob = new Agent("bob", bob2alice, alice2bob, null, "RSA/ECB/OAEPPadding") {
             @Override
             public void execute() throws Exception {
                 byte[] ct = incoming.take();
                 Cipher rsagen=Cipher.getInstance(cipher);
-                rsagen.init(Cipher.ENCRYPT_MODE,bobKP.getPrivate());
+                rsagen.init(Cipher.DECRYPT_MODE,bobKP.getPrivate());
                 byte[] pt=rsagen.doFinal(ct);
 
                 String msg=new String(pt,"UTF-8");

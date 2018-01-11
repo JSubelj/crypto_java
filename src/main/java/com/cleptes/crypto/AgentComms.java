@@ -57,6 +57,7 @@ class AgentComms {
                 print("msg_from_bob: "+new String(PT_from_bob,"UTF-8"));
                 Signature verifyer = Signature.getInstance("SHA256withRSA");
                 verifyer.initVerify(bob_keypair.getPublic());
+
                 verifyer.update(CT_from_bob);
                 if (verifyer.verify(signature))
                     print("Valid signature.");
