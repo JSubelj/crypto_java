@@ -56,7 +56,7 @@ public class symmetricCyphersSecrecy {
 
         // key generator navadn ime ciphra brez paddinga ipd
         KeyGenerator keyGenerator= KeyGenerator.getInstance("AES");
-        //keyGenerator.init(128 /* key size*/);
+        //keyGenerator.init(128 /* key size*/); // spec keysize 128, 192, and 256
         Key session_key = keyGenerator.generateKey();
 
         Agent alice = new Agent("Alice",alice2bob,bob2alice,session_key,null /* more bit specificiran full name: DES/ECB/PKCS5Padding*/){
